@@ -9,10 +9,12 @@ void menu(User &user){
     while(1){
         // Create a file for the user's transactions
         Transaction t;
-        user.trname = user.username + "_transactions.txt";
+        user.setTrname(user.getUsername() + "_transactions.txt");
 
         cout << "Menu:\n1.add transaction\n2.add income\n3.view transactions\n4.statistics\n5. exit" << endl;
+
         cin >> user.choice;
+
         switch(user.choice){
             // Add transaction
             case 1: if(!add_transaction(t, user))
@@ -78,7 +80,7 @@ bool add_transaction(Transaction &t, User &user){
 
 
         ofstream f3;
-        f3.open(user.trname, ios::app);
+        f3.open(user.getTrname(), ios::app);
 
         if(f3.fail()){
             return false;
@@ -105,7 +107,7 @@ bool add_transaction(Transaction &t, User &user){
 
     ofstream f4;
 
-    f4.open(user.trname, ios::app);
+    f4.open(user.getTrname(), ios::app);
 
     if(f4.fail()){
         return false;
@@ -121,7 +123,7 @@ bool add_transaction(Transaction &t, User &user){
 
  bool view_transactions(User &user){
     ifstream f5;
-    f5.open(user.trname, ios::in);
+    f5.open(user.getTrname(), ios::in);
 
     if(f5.fail()){
         return false;
@@ -150,7 +152,7 @@ bool add_transaction(Transaction &t, User &user){
  bool statistics(Transaction &t, User &user){
     cout << "\t---Statistics---" << endl;
     ifstream f6;
-    f6.open(user.trname, ios::in);
+    f6.open(user.getTrname(), ios::in);
 
     if(f6.fail()){
         return false;
