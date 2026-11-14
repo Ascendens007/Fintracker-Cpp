@@ -2,13 +2,12 @@
 #include <string>
 #include <fstream>
 #include "track.h"
-using namespace std;
 
 int main(){
 
     User user;
     if(!authorization(user)){
-        cout << "Authorization failed" << endl;
+        std::cout << "Authorization failed" << std::endl;
         return 0;
     }
 
